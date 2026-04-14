@@ -15,7 +15,10 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Initialize detector once (model caching)
 print("[APP] Initializing License Plate Detector...")
-detector = LicensePlateDetector()
+detector = None
+global detector
+if detector is None:
+    detector = LicensePlateDetector()
 print("[APP] Detector ready!")
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'mp4', 'avi', 'mov', 'mkv'}
