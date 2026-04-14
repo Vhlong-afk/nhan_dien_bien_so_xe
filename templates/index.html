@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận diện biển số xe - YOLOv8 + EasyOCR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🛣️ Nhận diện biển số xe tự động</h1>
+        <p>Upload ảnh hoặc video để detect biển số và đọc text.</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept="image/*,video/*" hidden>
+            <label for="fileInput" class="upload-btn">
+                📁 Chọn ảnh hoặc video từ máy
+            </label>
+            <p class="file-info" id="fileInfo"></p>
+        </div>
+        
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Đang xử lý... Vui lòng đợi</p>
+        </div>
+        
+        <div id="result" class="result hidden">
+            <h3>Kết quả:</h3>
+            <div class="result-content">
+                <div class="plate-image">
+                    <img id="plateImg" alt="Biển số xe">
+                </div>
+                <div class="plate-info">
+                    <p><strong>Biển số:</strong> <span id="plateText"></span></p>
+                    <p><strong>Độ tin cậy:</strong> <span id="confidence"></span></p>
+                </div>
+            </div>
+            <button id="newDetect" class="btn-secondary">Phân tích ảnh mới</button>
+        </div>
+        
+        <div id="error" class="error hidden"></div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
