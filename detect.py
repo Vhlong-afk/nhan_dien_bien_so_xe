@@ -11,7 +11,7 @@ class LicensePlateDetector:
         # Load YOLO model
         self.model = YOLO("best.pt")
         # Load EasyOCR reader (Vietnamese + English)
-        self.ocr_reader = easyocr.Reader(['vi', 'en'], gpu=False)
+        #self.ocr_reader = easyocr.Reader(['vi', 'en'], gpu=False)
 
     def detect_license_plate(self, image_path):
         """
@@ -86,10 +86,11 @@ class LicensePlateDetector:
             return None, "Không crop được biển số", best_conf
 
         # OCR text
-        ocr_results = self.ocr_reader.readtext(cropped_plate)
-        ocr_text = ' '.join([text[1] for text in ocr_results]).strip().upper()
-        if not ocr_text:
-            ocr_text = "Không đọc được text"
+        #ocr_results = self.ocr_reader.readtext(cropped_plate)
+        #ocr_text = ' '.join([text[1] for text in ocr_results]).strip().upper()
+        #if not ocr_text:
+           # ocr_text = "Không đọc được text"
+        ocr_text = "DEMO"
 
         # Convert cropped to base64
         _, buffer = cv2.imencode('.jpg', cropped_plate)
